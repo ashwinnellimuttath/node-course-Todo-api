@@ -20,6 +20,14 @@ app.post('/todos', (req, res) => {
         res.status(400).send(e);
     })
     console.log(req.body,'body');
+});
+
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos});
+    }, (e) => {
+        res.status(400).send(e);
+    })
 })
 
 app.listen(3000, () => {
